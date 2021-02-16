@@ -1,11 +1,11 @@
 export const LOGIN_USER = "LOGIN_USER"
 
-const loginUser = (username) => ({
+const loginUser = (userId) => ({
     type: LOGIN_USER,
-    username,
+    userId,
 })
 
-export const handleLoginUser = (username) => (dispatch, getState) => {
+export const handleLoginUser = (userId) => (dispatch, getState) => {
     const { users } = getState()
-    users[username] ? dispatch(loginUser(username)) : alert("Username is not registered.")
+    users[userId] ? dispatch(loginUser(userId)) : alert("User is not registered.")
 }
