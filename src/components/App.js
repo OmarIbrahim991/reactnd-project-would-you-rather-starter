@@ -7,6 +7,7 @@ import Home from './Home'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import QuestionPage from './QuestionPage'
+import Nav from './Nav'
 
 class App extends React.Component{
     componentDidMount() { this.props.dispatch(handleInitialData()) }
@@ -20,6 +21,7 @@ class App extends React.Component{
             <div className="container">
                 {
                     <Router>
+                        <Route path="/" component={Nav} />
                         <Route exact path="/" component={Home} />
                         <Route path="/new" component={NewQuestion} />
                         <Route path="/question/:id" component={QuestionPage} />
