@@ -7,9 +7,9 @@ class Question extends React.Component {
         const question = questions[id]
         return (
             <div>
-                    <h3>{users[question.author].name}</h3>
-                    <p>{question.optionOne.text}</p>
-                    <p>{question.optionTwo.text}</p>
+                <h3>{users[question.author].name}</h3>
+                <p>{question.optionOne.text}</p>
+                <p>{question.optionTwo.text}</p>
             </div>
         )
     }
