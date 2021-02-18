@@ -5,6 +5,7 @@ class Question extends React.Component {
     render() {
         const { users, questions, id } = this.props
         const question = questions[id]
+
         return (
             <div>
                 <h3>{users[question.author].name}</h3>

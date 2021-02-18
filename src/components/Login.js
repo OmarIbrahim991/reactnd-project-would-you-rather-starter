@@ -19,17 +19,26 @@ class Login extends React.Component {
             <div id="login-page">
                 {
                     showForm &&
-                    <form onSubmit={this.handleSubmit}>
-                        <h1>Login Page</h1>
-                        <select value={this.state.value} onChange={this.handleChange}>
-                            <option value="" disabled hidden>Select a user to login...</option>
+                    <form className="login-form" onSubmit={this.handleSubmit}>
+                        <div className="headers">
+                            <h1 className="header">Would You Rather App</h1>
+                            <h2 className="header">Login Page</h2>
+                        </div>
+
+                        <img className="logo" src="logo512.png" alt="logo" />
+
+                        <select className="select-user" value={this.state.value} onChange={this.handleChange}>
+                            <option value="" disabled hidden>Select a user to login</option>
                             {
                                 usersIds.map((userId) => (
-                                    <option key={userId} value={userId}>{users[userId].name}</option>
+                                    <option key={userId} value={userId}>
+                                        {users[userId].name}
+                                    </option>
                                 ))
-                            }
+                            }   
                         </select>
-                        <button>Login</button>
+
+                        <button className="btn-submit" disabled={this.state.value === ""}>Login</button>
                     </form>
                 }
             </div>

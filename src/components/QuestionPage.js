@@ -10,7 +10,7 @@ class QuestionPage extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.dispatch(handleAnswerQuestion({
-            questionId: this.props.id,
+            questionId: this.props.question.id,
             userId: this.props.currentUser,
             answer: this.state.selected
         }))
@@ -23,14 +23,17 @@ class QuestionPage extends React.Component {
         if(!question) {
             return (
                 <div>
-                    This question no longer exists.
+                    This question doesn't exist.
+                    {/* redirect to NotFound component */}
                 </div>
             )
         }
 
         if (answered) {
             return (
-                <div>Answered</div>
+                <div>
+                    Answered
+                </div>
             )
         }
 
@@ -58,7 +61,7 @@ const mapStateToProps = ({ currentUser, questions, users }, props) => {
         users,
         currentUser,
         question,
-        answered: question && (question.optionOne.votes.includes(currentUser) || question.optionTwo.votes.includes(currentUser)),
+        answered: question != null && (question.optionOne.votes.includes(currentUser) || question.optionTwo.votes.includes(currentUser)),
     }
 }
 

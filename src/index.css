@@ -1,0 +1,151 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-low: rgb(78, 11, 122);
+    --clr-high: #eee;
+    --clr-mid: rgb(28, 170, 236);
+    /* --clr-mid: rgb(78, 11, 122); */
+}
+
+body {
+    margin: 0;
+    color: var(--clr-low);
+    background-color: var(--clr-high);
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em auto;
+    padding: 3em 2em;
+    border: 5px solid var(--clr-low);
+    border-radius: 10px;
+    max-width: 1000px;
+}
+
+.headers {
+    text-align: center;
+}
+
+.logo {
+    max-width: 10rem;
+}
+
+.select-user {
+    color: var(--clr-high);
+    background-color: var(--clr-low);
+    min-width: 50%;
+    width: 10rem;
+    min-height: 2rem;
+    margin: 2em 0.1em 1em;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 115%;
+    color: var(--clr-low);
+    background-color: var(--clr-high);
+    border: 1px solid var(--clr-low);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    color: var(--clr-high);
+    background-color: var(--clr-low);
+}
+
+.btn-submit:active {
+    background-color: var(--clr-mid);
+}
+
+.btn-submit:disabled {
+    opacity: 0.5;
+    color: var(--clr-low);
+    background-color: var(--clr-high);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.1em 1em;
+    color: var(--clr-high);
+    background-color: var(--clr-low);
+}
+
+.nav-left {
+    display: flex;
+    flex: 4;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;    
+    padding: 0;
+}
+
+.nav-right {
+    display: flex;
+    flex: 5;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-left li {
+    margin: 1vmin;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--clr-high);
+    padding: 0.4em 0.6em;
+}
+
+.nav a:hover {
+    background-color: var(--clr-mid);
+    color: var(--clr-low);
+}
+
+.nav p {
+    margin: 0 1vmin;
+    min-width: 8em;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.nav-left li .active {
+    background-color: var(--clr-high);
+    color: var(--clr-low);
+}
+
+.btn-logout {
+    color: #eee;
+    background-color: var(--clr-low);
+    border: 1px solid var(--clr-high);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.6em;
+}
+
+.btn-logout:hover {
+    background-color: var(--clr-high);
+    color: var(--clr-low);
+}
+
+.user-avatar {
+    width: 2rem;
+    border-radius: 2rem;
+    margin: 0.2em;
+}
