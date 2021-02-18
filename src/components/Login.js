@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { handleLoginUser } from '../actions/currentUser'
 
 class Login extends React.Component {
@@ -13,19 +12,18 @@ class Login extends React.Component {
     }
 
     render() {
-        const { users, usersIds, showForm } = this.props
+        const { users, usersIds } = this.props
 
         return (
             <div id="login-page">
                 {
-                    showForm &&
                     <form className="login-form" onSubmit={this.handleSubmit}>
                         <div className="headers">
                             <h1 className="header">Would You Rather App</h1>
                             <h2 className="header">Login Page</h2>
                         </div>
 
-                        <img className="logo" src="logo512.png" alt="logo" />
+                        <img className="logo" src="/logo512.png" alt="logo" />
 
                         <select className="select-user" value={this.state.value} onChange={this.handleChange}>
                             <option value="" disabled hidden>Select a user to login</option>
@@ -46,14 +44,4 @@ class Login extends React.Component {
     }
 }
 
-const mapStateToProps = ({ users }) => {
-    const usersIds = Object.keys(users)
-
-    return {
-        showForm: usersIds.length > 0,
-        users,
-        usersIds,
-    }
-}
-
-export default connect(mapStateToProps)(Login)
+export default Login

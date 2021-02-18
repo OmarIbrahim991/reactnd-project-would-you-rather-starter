@@ -9,29 +9,32 @@ import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import QuestionPage from './QuestionPage'
 import Nav from './Nav'
+import Loading from './Loading'
+import NotFound from './NotFound'
 
 class App extends React.Component{
     componentDidMount() { this.props.dispatch(handleInitialData()) }
 
     render() {
         const { currentUser, users, dispatch } = this.props
+        const usersIds = Object.keys(users)
 
-        if (currentUser === null) { return <Login /> }
+        if (currentUser === null) {
+            return usersIds.length > 0 ? <Login usersIds={usersIds} users={users} dispatch={dispatch} /> : <Loading />
+        }
 
         return (
             <React.Fragment>
-                {
-                    <Router>
-                        <Nav userData={users[currentUser]} logout={() => dispatch(logout())} />
-                        <Switch>
-                            <Route exact path="/" component={Home} />
-                            <Route path="/new" component={NewQuestion} />
-                            <Route path="/leaderboard" component={LeaderBoard} />
-                            <Route path="/question/:id" component={QuestionPage} />
-                            <Route render={() => <h1>Not Found 404!</h1>} />
-                        </Switch>
-                    </Router>
-                }
+                <Router>
+                    <Nav userData={users[currentUser]} logout={() => dispatch(logout())} />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/new" component={NewQuestion} />
+                        <Route path="/leaderboard" component={LeaderBoard} />
+                        <Route path="/question/:id" component={QuestionPage} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </Router>
             </React.Fragment>
         )
     }

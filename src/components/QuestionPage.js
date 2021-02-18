@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
+import NotFound from './NotFound'
 
 class QuestionPage extends React.Component {
     state = { selected: "" }
@@ -20,14 +21,7 @@ class QuestionPage extends React.Component {
     render() {
         const { question, answered } = this.props
 
-        if(!question) {
-            return (
-                <div>
-                    This question doesn't exist.
-                    {/* redirect to NotFound component */}
-                </div>
-            )
-        }
+        if(!question) { return <NotFound message="Question doesn't exist." /> }
 
         if (answered) {
             return (
