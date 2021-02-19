@@ -12,7 +12,7 @@ import Nav from './Nav'
 import Loading from './Loading'
 import NotFound from './NotFound'
 
-class App extends React.Component{
+class App extends React.Component {
     componentDidMount() { this.props.dispatch(handleInitialData()) }
 
     render() {
@@ -24,18 +24,16 @@ class App extends React.Component{
         }
 
         return (
-            <React.Fragment>
-                <Router>
-                    <Nav userData={users[currentUser]} logout={() => dispatch(logout())} />
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/new" component={NewQuestion} />
-                        <Route path="/leaderboard" component={LeaderBoard} />
-                        <Route path="/question/:id" component={QuestionPage} />
-                        <Route component={NotFound} />
-                    </Switch>
-                </Router>
-            </React.Fragment>
+            <Router>
+                <Nav userData={users[currentUser]} logout={() => dispatch(logout())} />
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/new" component={NewQuestion} />
+                    <Route path="/leaderboard" component={LeaderBoard} />
+                    <Route path="/question/:id" component={QuestionPage} />
+                    <Route component={NotFound} />
+                </Switch>
+            </Router>
         )
     }
 }

@@ -8,9 +8,15 @@ class Home extends React.Component {
         const { unAnsweredQuestions, answeredQuestions } = this.props
 
         return (
-            <div>
-                <button onClick={() => this.setState({ showAnswered: false })}>Unanswered</button>
-                <button onClick={() => this.setState({ showAnswered: true })}>Answered</button>
+            <div className="card">
+                <div className="btns-container">
+                    <button className={this.state.showAnswered ? "btn-active" : "btn"} onClick={() => this.setState({ showAnswered: false })}>
+                        Unanswered
+                    </button>
+                    <button className={!this.state.showAnswered ? "btn-active" : "btn"} onClick={() => this.setState({ showAnswered: true })}>
+                        Answered
+                    </button>
+                </div>
                 <QuestionsList questions={this.state.showAnswered ? answeredQuestions : unAnsweredQuestions} />
             </div>
         )
