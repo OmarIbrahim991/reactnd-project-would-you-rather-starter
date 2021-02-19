@@ -5,8 +5,7 @@
 :root {
     --clr-low: rgb(78, 11, 122);
     --clr-high: #eee;
-    --clr-mid: rgb(28, 170, 236);
-    /* --clr-mid: rgb(78, 11, 122); */
+    --clr-mid: rgb(195, 218, 248);
 }
 
 body {
@@ -67,7 +66,7 @@ body {
 }
 
 .btn-submit:active {
-    background-color: var(--clr-mid);
+    color: var(--clr-mid);
 }
 
 .btn-submit:disabled {
@@ -231,32 +230,33 @@ body {
     padding: 1em;
 }
 
-.question {
+.small-card {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     width: 100%;
     border: 1px solid var(--clr-low);
     border-radius: 10px;
     margin: 0.5em 0;
     padding: 0.5em 0.25em;
-    background-color: rgb(195, 218, 248);
+    background-color: var(--clr-mid);
+    text-align: center;
 }
 
 .user-avatar-question {
-    width: 20%;
+    width: 25%;
     border-radius: 50%;
 }
 
 .question-desc {
-    flex: 1;
+    flex: 3;
     margin: 0 0.5em;
     padding: 0 1em;
     border-left: 1px solid var(--clr-low);
     text-align: center;
 }
 
-.question-desc button {
+.btn-card {
     width: 90%;
     height: 2rem;
     color: var(--clr-low);
@@ -267,11 +267,103 @@ body {
     cursor: pointer;
 }
 
-.question-desc button:hover {
+.btn-card:hover {
     color: var(--clr-high);
     background-color: var(--clr-low);
 }
 
-.question-desc button:active {
-    background-color: var(--clr-mid);
+.btn-card:active {
+    color: var(--clr-mid);
+}
+
+.btn-card:disabled {
+    color: var(--clr-low);
+    background-color: var(--clr-high);
+    opacity: 0.5;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 5px solid var(--clr-low);
+    border-radius: 10px;
+    max-width: 800px;
+    width: 100%;
+    margin: 2em auto;
+    padding: 1em 2em;
+    border: 4px solid var(--clr-low);
+}
+
+.create-form input {
+    width: 90%;
+    height: 2rem;
+    margin: 2em 0;
+    padding: 0.4em;
+    font-size: 110%;
+    border-radius: 4px;
+}
+
+.create-form h3 {
+    margin: 0.1em;
+}
+
+.leaderbord {
+    list-style: none;
+}
+
+.leaderbord li:nth-child(2) {
+    background-color: gold;
+}
+
+.leaderbord li:nth-child(3) {
+    background-color: silver;
+}
+
+.leaderbord li:nth-child(4) {
+    background-color: #cd7f32;
+}
+
+.board-avatar {
+    flex: 1;
+    border-radius: 50%;
+    width: 30%;
+}
+
+.middle {
+    flex: 2;
+    border-left: 1px solid var(--clr-low);
+    border-right: 1px solid var(--clr-low);
+    margin: 0 1em;
+    padding: 0 0.5em;
+    font-size: 120%;
+}
+
+.score-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+    font-weight: bolder;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+
+.row h2 {
+    flex: 1;
+}
+
+.score {
+    color: var(--clr-high);
+    background-color: var(--clr-low);
+    border-radius: 50%;
+    padding: 20%;
 }

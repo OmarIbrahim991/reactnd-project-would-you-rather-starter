@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux"
+import { withRouter } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends React.Component {
@@ -21,16 +22,20 @@ class NewQuestion extends React.Component {
             optionOne: "",
             optionTwo: "",
         })
+        this.props.history.push("/")
     }
 
     isDisabled = () => this.state.optionOne === "" || this.state.optionTwo === ""
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className="create-form" onSubmit={this.handleSubmit}>
+                <h1 className="header">Create New Question</h1>
+                <h2>Would you rather:</h2>
                 <input type="text" name="one" value={this.state.optionOne} onChange={this.handleChange} placeholder="Enter Option One"/>
+                <h3>OR</h3>
                 <input type="text" name="two" value={this.state.optionTwo} onChange={this.handleChange} placeholder="Enter Option Two"/>
-                <button disabled={this.isDisabled()}>Submit</button>
+                <button className="btn-card" disabled={this.isDisabled()}>Submit</button>
             </form>
         )
     }
@@ -40,4 +45,4 @@ const mapStateToProps = ({ currentUser, users }) => ({
     author: users[currentUser]
 })
 
-export default connect(mapStateToProps)(NewQuestion)
+export default withRouter(connect(mapStateToProps)(NewQuestion))

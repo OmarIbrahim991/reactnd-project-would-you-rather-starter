@@ -9,12 +9,12 @@ class Question extends React.Component {
         const { userData, question } = this.props
 
         return (
-            <div className="question">
+            <div className="small-card">
                 <img className="user-avatar-question" src={userData.avatarURL} alt="User's profile" />
                 <div className="question-desc">
                     <h3>{userData.name} asks:<br />Would you rather</h3>
                     <p>{question.optionOne.text} <br />or</p>
-                    <button onClick={this.handleClick}>View Poll</button>
+                    <button className="btn-card" onClick={this.handleClick}>View Poll</button>
                 </div>
             </div>
         )

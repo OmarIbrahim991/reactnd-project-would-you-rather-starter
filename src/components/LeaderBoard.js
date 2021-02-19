@@ -5,10 +5,30 @@ class LeaderBoard extends React.Component {
     render() {
         const { users } = this.props
         return (
-            <ul>
+            <ul className="card leaderbord">
+                <h1 className="header">Leaderboard</h1>
                 {
                     users.map((user) => (
-                        <li key={user.id}>{`${user.name}: ${user.questions.length + Object.keys(user.answers).length}`}</li>
+                        <li className="small-card" key={user.id}>
+                            <img className="board-avatar" src={user.avatarURL} alt="User's Profile" />
+                            <div className="middle">
+                                <div className="row">
+                                    <h2>{user.name}</h2>
+                                </div>
+                                <div className="row">
+                                    <p>Answered questions</p>
+                                    <p>{Object.keys(user.answers).length}</p>
+                                </div>
+                                <div className="row">
+                                    <p>Created questions</p>
+                                    <p>{user.questions.length}</p>
+                                </div>
+                            </div>
+                            <div className="score-container">
+                                <p>Score</p>
+                                <h3 className="score">{user.questions.length + Object.keys(user.answers).length}</h3>
+                            </div>
+                        </li>
                     ))
                 }
             </ul>
