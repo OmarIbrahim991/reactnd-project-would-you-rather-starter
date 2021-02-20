@@ -2,11 +2,13 @@ import React from 'react'
 import { connect } from "react-redux"
 import { withRouter } from 'react-router-dom'
 import { handleAddQuestion } from '../actions/questions'
+import Loading from './Loading'
 
 class NewQuestion extends React.Component {
     state = {
         optionOne: "",
         optionTwo: "",
+        loading: false
     }
 
     handleChange = e => this.setState({ [ e.target.name==="two" ? "optionTwo" : "optionOne" ]: e.target.value })
@@ -17,18 +19,20 @@ class NewQuestion extends React.Component {
             optionOneText: this.state.optionOne,
             optionTwoText: this.state.optionTwo,
             author: this.props.author.id,
-        }))
+        }, () => this.props.history.push("/")))
         this.setState({
             optionOne: "",
             optionTwo: "",
+            loading: true,
         })
-        this.props.history.push("/")
     }
 
     isDisabled = () => this.state.optionOne === "" || this.state.optionTwo === ""
 
     render() {
-        return(
+        if (this.state.loading) { return <Loading /> }
+
+        return (
             <form className="create-form" onSubmit={this.handleSubmit}>
                 <h1 className="header">Create New Question</h1>
                 <h2>Would you rather:</h2>

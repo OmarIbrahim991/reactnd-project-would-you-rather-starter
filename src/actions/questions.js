@@ -14,9 +14,12 @@ const addQuestion = (question) => ({
     question,
 })
 
-export const handleAddQuestion = (params) => (dispatch) => {
+export const handleAddQuestion = (params, callback) => (dispatch) => {
     _saveQuestion(params)
-    .then(question => dispatch(addQuestion(question)))
+    .then(question => {
+        dispatch(addQuestion(question))
+        callback()
+    })
     .catch(err => alert(err.message))
 }
 
