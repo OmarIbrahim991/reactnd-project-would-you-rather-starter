@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { handleInitialData } from '../actions/shared'
 import { logout } from '../actions/currentUser'
 import Login from './Login'
@@ -13,6 +14,12 @@ import Loading from './Loading'
 import NotFound from './NotFound'
 
 class App extends React.Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        users: PropTypes.object.isRequired,
+        currentUser: PropTypes.string,
+    }
+
     componentDidMount() { this.props.dispatch(handleInitialData()) }
 
     render() {

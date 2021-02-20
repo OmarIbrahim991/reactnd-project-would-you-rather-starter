@@ -1,4 +1,5 @@
-import Question from "./Question"
+import PropTypes from 'prop-types'
+import Question from './Question'
 
 const QuestionsList = ({ questions }) => (
     questions.length > 0 &&
@@ -10,5 +11,9 @@ const QuestionsList = ({ questions }) => (
         }
     </ul>
 )
+
+QuestionsList.propTypes = {
+    questions: PropTypes.array.isRequired,
+}
 
 export default QuestionsList

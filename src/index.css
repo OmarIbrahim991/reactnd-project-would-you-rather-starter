@@ -456,7 +456,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid var(--clr-low);
+    border: 2px solid var(--clr-low);
     border-radius: 8px;
     width: 90%;
     margin: 0.5em;
@@ -466,6 +466,7 @@ body {
 
 .answer-option.active {
     background-color: yellow;
+    border: 4px solid green;
 }
 
 .vote {

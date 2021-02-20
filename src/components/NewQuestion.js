@@ -1,10 +1,17 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { handleAddQuestion } from '../actions/questions'
 import Loading from './Loading'
 
 class NewQuestion extends React.Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        history: PropTypes.object.isRequired,
+        author: PropTypes.object.isRequired,
+    }
+
     state = {
         optionOne: "",
         optionTwo: "",

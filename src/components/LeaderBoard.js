@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class LeaderBoard extends React.Component {
+    static propTypes = {
+        users: PropTypes.array.isRequired,
+    }
+
     render() {
         const { users } = this.props
         return (

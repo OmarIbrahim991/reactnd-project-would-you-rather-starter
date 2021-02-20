@@ -1,8 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class Question extends React.Component {
+    static propTypes = {
+        history: PropTypes.object.isRequired,
+        question: PropTypes.object.isRequired,
+        userData: PropTypes.object.isRequired,
+    }
+
     handleClick = () => this.props.history.push(`/question/${this.props.id}`)
 
     render() {

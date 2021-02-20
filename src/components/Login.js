@@ -1,7 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { handleLoginUser } from '../actions/currentUser'
 
 class Login extends React.Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        users: PropTypes.object.isRequired,
+        usersIds: PropTypes.array.isRequired,
+    }
+
     state = { value: "" }
 
     handleChange = e => this.setState({ value: e.target.value })

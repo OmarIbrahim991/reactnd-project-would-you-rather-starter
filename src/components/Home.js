@@ -1,9 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import QuestionsList from './QuestionsList'
 
 class Home extends React.Component {
+    static propTypes = {
+        unAnsweredQuestions: PropTypes.array.isRequired,
+        answeredQuestions: PropTypes.array.isRequired,
+    }
+
     state = { showAnswered: false }
+
     render() {
         const { unAnsweredQuestions, answeredQuestions } = this.props
 

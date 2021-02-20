@@ -1,10 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import { handleAnswerQuestion } from '../actions/questions'
 import NotFound from './NotFound'
 import Loading from './Loading'
 
 class QuestionPage extends React.Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        question: PropTypes.object.isRequired,
+        authorData: PropTypes.object.isRequired,
+        answered: PropTypes.bool.isRequired,
+        currentUser: PropTypes.string.isRequired,
+    }
+
     state = { selected: "", loading: false }
 
     handleChange = e => this.setState({ selected: e.target.value })
@@ -21,10 +30,11 @@ class QuestionPage extends React.Component {
 
     render() {
         const { question, authorData, answered, currentUser } = this.props
-        const votes1 = question.optionOne.votes.length
-        const votes2 = question.optionTwo.votes.length
 
         if(!question) { return <NotFound message="Question doesn't exist." /> }
+
+        const votes1 = question.optionOne.votes.length
+        const votes2 = question.optionTwo.votes.length
 
         if (this.state.loading) { return <Loading /> }
 
@@ -92,7 +102,7 @@ class QuestionPage extends React.Component {
 const mapStateToProps = ({ currentUser, questions, users }, props) => {
     const id = props.match.params.id
     const question = questions[id]
-    const authorData = users[question.author]
+    const authorData = question ? users[question.author] : {}
 
     return {
         currentUser,
