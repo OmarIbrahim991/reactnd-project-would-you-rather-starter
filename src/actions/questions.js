@@ -30,9 +30,12 @@ const answerQuestion = (questionId, userId, answer) =>({
     answer,
 })
 
-export const handleAnswerQuestion = (params) => (dispatch) => {
+export const handleAnswerQuestion = (params, callback) => (dispatch) => {
     const { questionId, userId, answer } = params
     _saveQuestionAnswer({ authedUser: userId, qid: questionId, answer })
-    .then(() => dispatch(answerQuestion(questionId, userId, answer)))
+    .then(() => {
+        dispatch(answerQuestion(questionId, userId, answer))
+        callback()
+    })
     .catch(err => alert(err.message))
 }
