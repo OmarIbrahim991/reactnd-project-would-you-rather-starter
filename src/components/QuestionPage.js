@@ -20,7 +20,9 @@ class QuestionPage extends React.Component {
     }
 
     render() {
-        const { question, authorData, answered } = this.props
+        const { question, authorData, answered, currentUser } = this.props
+        const votes1 = question.optionOne.votes.length
+        const votes2 = question.optionTwo.votes.length
 
         if(!question) { return <NotFound message="Question doesn't exist." /> }
 
@@ -28,8 +30,40 @@ class QuestionPage extends React.Component {
 
         if (answered) {
             return (
-                <div>
-                    Answered
+                <div className="answered-container">
+                    <h3 className="answered-header">Asked by {authorData.name}</h3>
+                    <div className="answered-question">
+                        <img className="answered-avatar" src={authorData.avatarURL} alt="User's Profile" />
+                        <div className="answered-desc">
+                            <h2>Results:</h2>
+                            <div className={`answer-option${question.optionOne.votes.includes(currentUser) ? " active" : ""}`}>
+                                <p className={question.optionOne.votes.includes(currentUser) ? "vote-active" : "vote"}>&#10004;</p>
+                                <p>Would you rather {question.optionOne.text}?</p>
+                                <div className="bar">
+                                    {
+                                        votes1 > 0 &&
+                                        <span className="filled" style={{ width: `${Math.round(100*votes1/(votes1+votes2))}%`}}>
+                                            {Math.round(100*votes1/(votes1+votes2)) + "%"}
+                                        </span>
+                                    }
+                                </div>
+                                <p>{`${votes1} out of ${votes1+votes2} votes`}</p>
+                            </div>
+                            <div className={`answer-option${question.optionTwo.votes.includes(currentUser) ? " active" : ""}`}>
+                                <p className={question.optionTwo.votes.includes(currentUser) ? "vote-active" : "vote"}>&#10004;</p>
+                                <p>Would you rather {question.optionTwo.text}?</p>
+                                <div className="bar">
+                                    {
+                                        votes2 > 0 &&
+                                        <span className="filled" style={{ width: `${Math.round(100*votes2/(votes1+votes2))}%`}}>
+                                            {Math.round(100*votes2/(votes1+votes2)) + "%"}
+                                        </span>
+                                    }
+                                </div>
+                                <p>{`${votes2} out of ${votes1+votes2} votes`}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }

@@ -5,6 +5,7 @@ class LeaderBoard extends React.Component {
     render() {
         const { users } = this.props
         return (
+            users.length > 0 &&
             <ul className="card leaderbord">
                 <h1 className="header">Leaderboard</h1>
                 {
